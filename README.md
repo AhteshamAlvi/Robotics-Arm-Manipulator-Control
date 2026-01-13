@@ -86,19 +86,19 @@ move_arm(above_final_pose)
 
 Math for Camera Frame
 
-	Due to the angle and lens of the camera, it views the plane where the blocks are as a trapezoid rather than a rectangular plane. That is what the W accounts for. W accounts for as the plane recedes into the distance, it stretches while the nearer side of the plane is compressed. By using the perspective matrix and dividing by W we are able to translate the skewed view of the camera into a rectangular world frame. This is how we can take the coordinates of the AruCo markers and translate it into the robot frame.
+Due to the angle and lens of the camera, it views the plane where the blocks are as a trapezoid rather than a rectangular plane. That is what the W accounts for. W accounts for as the plane recedes into the distance, it stretches while the nearer side of the plane is compressed. By using the perspective matrix and dividing by W we are able to translate the skewed view of the camera into a rectangular world frame. This is how we can take the coordinates of the AruCo markers and translate it into the robot frame.
 
 Camera Code:
 for i in range(len(ids)):
-           (u, v) = marker_centers[i]
-           x = np.array([u, v, 1])
-           x_1 = perspective_matrix @ x
-           w = x_1[2]
-           X = x_1[0]/w
-           Y = x_1[1]/w
-           marker_centers_in_table_frame[i] = (X,Y)
-           value1 = "" + str(X)
-           value2 = "" + str(Y)
+	(u, v) = marker_centers[i]
+	x = np.array([u, v, 1])
+	x_1 = perspective_matrix @ x
+	w = x_1[2]
+	X = x_1[0]/w
+	Y = x_1[1]/w
+	marker_centers_in_table_frame[i] = (X,Y)
+	value1 = "" + str(X)
+	value2 = "" + str(Y)
 
 Videos: 
 
